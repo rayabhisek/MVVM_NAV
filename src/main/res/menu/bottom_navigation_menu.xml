@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ /**
+  ~  * Created by Abhisek on 11/25/19 4:18 PM
+  ~  * Copyright (c) 2019 . All rights reserved.
+  ~  * Last modified 11/25/19 4:18 PM
+  ~  */
+  -->
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:menuCategory="secondary"
+        android:id="@+id/homeFragment"
+        android:icon="@drawable/ic_home"
+        android:title="Home"/>
+
+    <item
+        android:menuCategory="secondary"
+        android:id="@+id/addFragment"
+        android:icon="@drawable/ic_plus"
+        android:title="Add"/>
+
+    <item
+        android:menuCategory="secondary"
+        android:id="@+id/settingFragment"
+        android:icon="@drawable/ic_settings"
+        android:title="Setting"/>
+</menu>

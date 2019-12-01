@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">MVVMSample</string>
+    <string name="simple_login_and_notes">Simple login and notes</string>
+    <string name="middle_notes">Created by UK junior doctors, Pulsenotes is fresh, innovative and easy to use. Whether a medical, nursing or physician associate student, we are an online revision platform with a difference.</string>
+    <string name="forgot_password">Forgot Password?</string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="welcome_back">Welcome Back,</string>
+    <string name="sign_in_to_continue">Sign in to continue</string>
+    <string name="login">Login</string>
+    <string name="new_user">New userPostBody?</string>
+    <string name="sign_up">Sign Up</string>
+    <string name="full_name">Full Name</string>
+    <string name="sign_up_to_continue">Sign up to continue</string>
+    <string name="gender">Gender</string>
+    <string name="female">Female</string>
+    <string name="male">Male</string>
+    <string name="registration">Registration</string>
+    <string name="invalid_email_password"><![CDATA[invalid username & password]]></string>
+</resources>
