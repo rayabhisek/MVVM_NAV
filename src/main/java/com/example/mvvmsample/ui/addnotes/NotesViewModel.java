@@ -1,34 +1,35 @@
 package com.example.mvvmsample.ui.addnotes;
 
-import android.app.Application;
 
-
-import com.example.mvvmsample.data.repository.NotesRepository;
+import com.example.mvvmsample.data.local.NotesDataSource;
 import com.example.mvvmsample.data.model.NotesModel;
-
-import java.util.List;
-
-import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LiveData;
+import com.example.mvvmsample.ui.base.BaseViewModel;
 
 
-public class NotesViewModel extends AndroidViewModel {
+import io.reactivex.Completable;
+import io.reactivex.Flowable;
 
-    private NotesRepository mRepository;
 
-    private LiveData<List<NotesModel>> mAllWords;
 
-    public NotesViewModel(Application application) {
-        super(application);
-        mRepository = new NotesRepository(application);
-        mAllWords = mRepository.getAllWords();
+public class NotesViewModel extends BaseViewModel {
+
+    private NotesDataSource notesDataSource;
+
+    public NotesViewModel(NotesDataSource notesDataSource) {
+        this.notesDataSource = notesDataSource;
     }
 
-    public LiveData<List<NotesModel>> getAllNotes() { return mAllWords; }
-
-    public void insert(NotesModel notes) {
-        mRepository.insert(notes);
+    public Flowable getAllTasks(){
+        return notesDataSource.getAll();
     }
+
+    public Completable insertNotes(NotesModel notesModel){
+        return Completable.fromAction(() -> {
+            notesDataSource.insert(notesModel);
+        });
+    }
+
+
 
 
 }

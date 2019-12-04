@@ -13,10 +13,10 @@ android {
         vectorDrawables.useSupportLibrary = true
     }
     buildTypes {
-        debug{
+        debug {
             buildConfigField("String", "BASE_URL", "\"https://api.simplifiedcoding" +
                     ".in/course-apis/mvvm/\"")
-           /* buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")*/
+            /* buildConfigField("String", "API_KEY", "\"ABCXYZ123TEST\"")*/
         }
 
         release {
@@ -44,9 +44,10 @@ dependencies {
 
     // database
     implementation "androidx.room:room-rxjava2:$rootProject.roomDatabaseVersion"
+    implementation 'com.android.support:support-v4:29.+'
     annotationProcessor "androidx.room:room-compiler:$rootProject.roomDatabaseVersion"
 
-    // dependency injection
+    // dependency Injection
     implementation "com.google.dagger:dagger:$rootProject.dagger2Version"
     annotationProcessor "com.google.dagger:dagger-compiler:$rootProject.dagger2Version"
     annotationProcessor "com.google.dagger:dagger-android-processor:$rootProject.dagger2Version"

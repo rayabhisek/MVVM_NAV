@@ -98,7 +98,7 @@ public abstract class BaseActivity<T extends ViewDataBinding,V extends BaseViewM
     }
 
     /**
-     * add the dependcy injection in the activity
+     * add the dependcy Injection in the activity
      */
 
     public void performDependencyInjection() {

@@ -9,6 +9,7 @@
 package com.example.mvvmsample.di.component;
 
 import android.app.Application;
+import android.content.Context;
 
 import com.example.mvvmsample.MvvmApp;
 import com.example.mvvmsample.di.builder.ActivityBuilder;
@@ -19,6 +20,7 @@ import javax.inject.Singleton;
 
 import dagger.BindsInstance;
 import dagger.Component;
+import dagger.Provides;
 import dagger.android.AndroidInjectionModule;
 
 @Singleton
@@ -35,4 +37,6 @@ public interface AppComponent {
 
         AppComponent build();
     }
+
+
 }

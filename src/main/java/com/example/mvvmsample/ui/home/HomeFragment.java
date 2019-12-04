@@ -9,88 +9,56 @@
 package com.example.mvvmsample.ui.home;
 
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.DefaultItemAnimator;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import io.reactivex.disposables.CompositeDisposable;
 
 import com.example.mvvmsample.R;
-import com.example.mvvmsample.data.model.Notes;
-import com.example.mvvmsample.data.model.NotesModel;
 import com.example.mvvmsample.ui.addnotes.NotesViewModel;
+import com.example.mvvmsample.ui.addnotes.ViewModelFactory;
+import com.example.mvvmsample.utils.Injection;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class HomeFragment extends Fragment {
     private View view;
-
     private RecyclerView recyclerView;
     private NoteAdapter mAdapter;
     private RecyclerView.LayoutManager layoutManager;
-    private List<Notes> noteList = new ArrayList<>();
     private NotesViewModel notesViewModel;
+    private ViewModelFactory mViewModelFactory;
+    private CompositeDisposable compositeDisposable = new CompositeDisposable();
 
-    @Nullable
+
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = inflater.inflate(R.layout.fragment_home, null);
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+        view = inflater.inflate(R.layout.fragment_home, container,false);
+
         recyclerView = (RecyclerView)view.findViewById(R.id.recycler_view);
-        //prepareMovieData();
+        mViewModelFactory = Injection.provideViewModelFactory(getActivity());
+        notesViewModel = ViewModelProviders.of(this, mViewModelFactory).get(NotesViewModel.class);
         recyclerView.setHasFixedSize(true);
         layoutManager = new LinearLayoutManager(view.getContext());
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        notesViewModel = ViewModelProviders.of(getActivity()).get(NotesViewModel.class);
-        mAdapter = new NoteAdapter();
-        notesViewModel.getAllNotes().observe(getActivity(), notesModels -> {
-            mAdapter.setNotes(notesModels);
-            recyclerView.setAdapter(mAdapter);
-        });
-
-
-       /* mAdapter = new NoteAdapter(noteList);
-        recyclerView.setAdapter(mAdapter);*/
+        //homeViewModel = ViewModelProviders.of(getActivity()).get(NotesViewModel.class);
+        //mAdapter = new NoteAdapter(homeViewModel);
+        /*NotesModel notesModel = new NotesModel("Hii",)
+        mAdapter.setNotes(notesModel);*/
+        recyclerView.setAdapter(new NoteAdapter(notesViewModel));
         return view;
     }
 
-    private void prepareMovieData() {
+    @Override
+    public void onStop() {
+        super.onStop();
 
-        Notes notes = new Notes("Today Notes","","10-12-2019");
-        noteList.add(notes);
-
-        notes = new Notes("Impotant Notes","","02-12-2018");
-        noteList.add(notes);
-
-        notes = new Notes("Late Notes","","31-08-2018");
-        noteList.add(notes);
-
-        notes = new Notes("Today Notes","","10-12-2019");
-        noteList.add(notes);
-
-        notes = new Notes("Impotant Notes","","02-12-2018");
-        noteList.add(notes);
-
-        notes = new Notes("Late Notes","","31-08-2018");
-        noteList.add(notes);
-
-        notes = new Notes("Today Notes","","10-12-2019");
-        noteList.add(notes);
-
-        notes = new Notes("Impotant Notes","","02-12-2018");
-        noteList.add(notes);
-
-        notes = new Notes("Late Notes","","31-08-2018");
-        noteList.add(notes);
     }
 }

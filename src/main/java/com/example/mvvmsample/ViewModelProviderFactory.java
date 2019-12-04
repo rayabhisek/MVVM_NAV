@@ -2,6 +2,10 @@ package com.example.mvvmsample;
 
 
 
+import android.app.Application;
+
+import com.example.mvvmsample.ui.addnotes.NotesViewModel;
+import com.example.mvvmsample.ui.home.HomeViewModel;
 import com.example.mvvmsample.ui.login.LoginViewModel;
 import com.example.mvvmsample.ui.splash.SplashViewModel;
 
@@ -15,6 +19,7 @@ import androidx.lifecycle.ViewModelProvider;
 @Singleton
 public class ViewModelProviderFactory extends ViewModelProvider.NewInstanceFactory {
 
+    private Application application;
     @Inject
     public ViewModelProviderFactory() {
     }
@@ -30,6 +35,12 @@ public class ViewModelProviderFactory extends ViewModelProvider.NewInstanceFacto
             //noinspection unchecked
             return (T) new LoginViewModel();
         }
+        if (modelClass.isAssignableFrom(HomeViewModel.class)) {
+            //noinspection unchecked
+            return (T) new HomeViewModel();
+        }
+
+        
         throw new IllegalArgumentException("Unknown ViewModel class: " + modelClass.getName());
     }
 

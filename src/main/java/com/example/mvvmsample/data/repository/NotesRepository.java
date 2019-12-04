@@ -1,23 +1,13 @@
 package com.example.mvvmsample.data.repository;
 
-import android.app.Application;
 
-import com.example.mvvmsample.data.local.NotesDao;
-import com.example.mvvmsample.data.local.NotesRoomDatabase;
-import com.example.mvvmsample.data.model.NotesModel;
-
-import java.util.List;
-
-import androidx.lifecycle.LiveData;
-
-
-public class NotesRepository {
+/*public class NotesRepository {
 
     private NotesDao notesDao;
     private LiveData<List<NotesModel>> mAllNotes;
 
-    public NotesRepository(Application application) {
-        NotesRoomDatabase db = NotesRoomDatabase.getDatabase(application);
+*//*    public NotesRepository(Application application) {
+        NotesDatabase db = NotesDatabase.getDatabase(application);
         notesDao = db.notesDao();
         mAllNotes = notesDao.notesModelLive();
     }
@@ -26,8 +16,8 @@ public class NotesRepository {
     }
 
    public void insert(NotesModel notesModel) {
-        NotesRoomDatabase.databaseWriteExecutor.execute(() -> {
+        NotesDatabase.databaseWriteExecutor.execute(() -> {
             notesDao.insert(notesModel);
         });
-    }
-}
+    }*//*
+}*/

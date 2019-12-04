@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "notes_table")
-public class NotesModel {
+public class NotesModel implements Comparable<NotesModel> {
     @NonNull
     @PrimaryKey(autoGenerate = true)
     int id;
@@ -29,8 +29,6 @@ public class NotesModel {
                 '}';
     }
 
-    public NotesModel() {
-    }
 
     public NotesModel(@NonNull String title, @NonNull String notes) {
         this.title = title;
@@ -60,5 +58,10 @@ public class NotesModel {
 
     public void setNotes(String notes) {
         this.notes = notes;
+    }
+
+    @Override
+    public int compareTo(NotesModel notesModel) {
+        return this.title.compareToIgnoreCase(notesModel.getTitle());
     }
 }

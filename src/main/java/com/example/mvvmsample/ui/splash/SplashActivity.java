@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.lifecycle.ViewModelProviders;
-import com.example.mvvmsample.BR;
 import com.example.mvvmsample.R;
 import com.example.mvvmsample.ViewModelProviderFactory;
 import com.example.mvvmsample.databinding.ActivitySpalshBinding;
@@ -32,7 +31,7 @@ public class SplashActivity extends BaseActivity<ActivitySpalshBinding,SplashVie
 
     @Override
     public int getBindingVariable() {
-        return BR.viewModel;
+        return com.example.mvvmsample.BR.viewModel;
     }
 
     @Override
